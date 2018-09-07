@@ -31,33 +31,29 @@ window.addEventListener('DOMContentLoaded', function() {
    // Gift END Модальное окно с подарком
 
    // showDesign START Модальные окна popup-design 
-   // function showDesign() {
+   function showDesign() {
      
-   //    let btn_design = document.querySelectorAll('.button-design'),
-   //        popup_design = document.querySelector('.popup-design');
+      let btn_design = document.querySelectorAll('.button-design'),
+          popup_design = document.querySelector('.popup-design');
 
-   //    document.addEventListener('click', function(event) {
-   //       let target = event.target;
-   //       if (hasClassName(target, 'n-d') ) {
-   //          popup_design.classList.add('show');
-   //       } else if ( !hasClassName(target, 'popup-content') && 
-   //          !hasClassName(target, 'popup-content').parentNode || target.className === 'popup-close'){
-   //          popup_design.classList.remove('show');
+      document.addEventListener('click', function(event) {
+         let target = event.target;
+         if ( /button-design/g.test(target.className) ) {
+            popup_design.classList.add('show');
+         }
+      });
 
-   //       }
-   //    });
-
-      // popup_design.addEventListener('click', function(event) {
-      //    let target = event.target;
-      //    if (target.className != 'popup-dialog' && 
-      //       target.parentNode.className != 'popup-dialog' ||
-      //        target.className === 'popup-close') {
-      //       popup_design.classList.remove('show');
-      //       popup_design.classList.add('hide');
-      //    }
-      // });
-   // }
-   // showDesign();
+      popup_design.addEventListener('click', function(event) {
+         let target = event.target;
+         if (target.className != 'popup-dialog' && 
+            target.parentNode.className != 'popup-dialog' ||
+             target.className === 'popup-close') {
+            popup_design.classList.remove('show');
+            popup_design.classList.add('hide');
+         }
+      });
+   }
+   showDesign();
    // showDesign END Модальные окна popup-design 
 
    // For All START
