@@ -1257,6 +1257,11 @@ h4 {
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
 }
+.status-img {
+  display: block;
+  margin: 0 auto;
+  max-height: 60px !important
+}
 @media (max-width: 1399px) {
   .paints {
     display: none;
@@ -1724,3 +1729,4 @@ h4 {
     width: 25rem;
   }
 }
+
