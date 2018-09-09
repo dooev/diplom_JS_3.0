@@ -124,7 +124,7 @@ window.addEventListener('DOMContentLoaded', function() {
    showConsult();
    // showConsult END Модальные окна popup-consultation
 
-   //  START Фильтрация блоков
+//  START Фильтрация блоков
    function blockFilter() {
       let blockPortfol = document.querySelector('.portfolio'),
          btnS_Portfol = blockPortfol.querySelectorAll('li'),
@@ -174,10 +174,10 @@ window.addEventListener('DOMContentLoaded', function() {
       }
    }
    blockFilter();
-   //  END Фильтрация блоков
+//  END Фильтрация блоков
 
 
-   // formsValid START Формы в модальных окнах
+// formsValid START Формы в модальных окнах
    function ajax() {
 
       let formS = document.getElementsByTagName('form'),
@@ -211,7 +211,7 @@ window.addEventListener('DOMContentLoaded', function() {
       validator(inputMessage, '^[А-Яа-я]+$', 'Введите комментарий на русском');
 
       function validator(inputsArr, regExpr, plaseholder) {
-         for (var i = 0; i < inputPhone.length; i++) {
+         for (var i = 0; i < inputsArr.length; i++) {
             inputsArr[i].setAttribute("pattern", regExpr);
             inputsArr[i].setAttribute("placeholder", plaseholder);
          }
@@ -301,9 +301,12 @@ window.addEventListener('DOMContentLoaded', function() {
    }
    ajax();
    // module.exports = ajax;
-   // formsValid END Формы в модальных окнах
+// formsValid END Формы в модальных окнах
 
 
+// calc START Калькулятор
+   
+// calc END Калькулятор
 
 
 }); // GENERAL END 
