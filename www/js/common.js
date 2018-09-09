@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function() {
    showGift();
 // Gift END Модальное окно с подарком
 
-   // showDesign START Модальные окна popup-design 
+// showDesign START Модальные окна popup-design 
    function showDesign() {
 
       let btn_design = document.querySelectorAll('.button-design'),
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', function() {
    }
 
    showDesign();
-   // showDesign END Модальные окна popup-design 
+// showDesign END Модальные окна popup-design 
 
    // showMoreStyle START Подгрузка блоков
    function showMoreStyle() {
