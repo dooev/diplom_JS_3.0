@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
 
 
-   // Gift START Модальное окно с подарком
+// Gift START Модальное окно с подарком
    function showGift() {
 
       let btn_gift = document.querySelector('.fixed-gift'),
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
    }
    showGift();
-   // Gift END Модальное окно с подарком
+// Gift END Модальное окно с подарком
 
 // showDesign START Модальные окна popup-design 
    function showDesign() {
@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', function() {
    showMoreStyle();
 // showMoreStyle END Подгрузка блоков
 
-   // showConsult START Модальные окна popup-consultation
+// showConsult START Модальные окна popup-consultation
    function showConsult() {
 
       let btn_consult = document.querySelectorAll('.button-consultation'),
@@ -122,38 +122,228 @@ window.addEventListener('DOMContentLoaded', function() {
    }
 
    showConsult();
-   // showConsult END Модальные окна popup-consultation
+// showConsult END Модальные окна popup-consultation
+
+//  START Фильтрация блоков
+   function blockFilter (){
+      let blockPortfol = document.querySelector('.portfolio'),
+          btnS_Portfol = blockPortfol.querySelectorAll('li'),
+          blockS_Portfol = blockPortfol.querySelectorAll('.portfolio-block'),
+          portfol_no_block = blockPortfol.querySelector('.portfolio-no'),
+          blockGrandmother = document.querySelector('.grandmother'),
+          blockGranddad = document.querySelector('.granddad');
+      // акнивная кнопка
+      for (var i = 0; i < btnS_Portfol.length; i++) {
+           btnS_Portfol[i].addEventListener('click', function (){
+               for (var i = 0; i < btnS_Portfol.length; i++) {
+                  btnS_Portfol[i].classList.remove('active');
+               }
+               this.classList.toggle('active');
+               
+               showBlockPortfol('all', this);
+               showBlockPortfol('lovers', this);
+               showBlockPortfol('chef', this);
+               showBlockPortfol('girl', this);
+               showBlockPortfol('guy', this);
+               showBlockPortfol('grandmother', this);
+               showBlockPortfol('granddad', this);
+              
+           });
+
+         function showBlockPortfol (NameClass, thisBtn) {
+            if (thisBtn.classList.contains(NameClass) ) {
+               for (let i = 0; i < blockS_Portfol.length; i++) {
+                  if ( blockS_Portfol[i].classList.contains(NameClass) ) { 
+                     blockS_Portfol[i].classList.add('show');
+                  } 
+                  else {
+                     blockS_Portfol[i].classList.remove('show');
+                     blockS_Portfol[i].classList.add('hide');
+                     portfol_no_block.classList.remove('show');
+
+                  }
+                  // для бабушек и дедушек
+                  if ( thisBtn.classList.contains('grandmother') ||  
+                     thisBtn.classList.contains('granddad') ) {
+                     portfol_no_block.classList.add('show');
+                     for (let i = 0; i < blockS_Portfol.length; i++) {
+                        blockS_Portfol[i].classList.remove('show');
+                        blockS_Portfol[i].classList.add('hide');
+                     }
+                  }
+               }
+            }
+         }
+      }  
+   }
+   blockFilter();
+//  END Фильтрация блоков
+
+
+// formsValid START Формы в модальных окнах
+   // function formsValid () {
+   //    let inputName = document.querySelectorAll('input[name="name"]'),
+   //        inputPhone = document.querySelectorAll('input[name="phone"]'),
+   //        inputMail = document.querySelectorAll('input[name="email"]'),
+   //        inputMessage = document.querySelectorAll('input[name="message"]'),
+   //        btnSubmit = document.querySelectorAll('button[type=submit]');  
+         
+   //    // Валидация
+   //    function InputValid (input, regExpr){
+   //       input.value = input.value.replace(regExpr, '');
+   //    }
+
+   //    for (let i = 0; i < inputName.length; i++) {
+   //      // inputName[i].addEventListener('change', InputValid(this, /^[а-яё]*$/ig));
+   //       inputName[i].value.replace(/^[а-яё]*$/ig, '');
+   //    }      
+
+   //    for (let i = 0; i < inputPhone.length; i++) {
+   //       // inputPhone[i].addEventListener('change', InputValid( this, /[\>\<\[\]\{\}\/\|\\':;`~"e+A-Za-zА-Яа-я!@#$%^&*()_=.,?-]/gi));
+   //    }
+
+   //    for (let i = 0; i < inputMail.length; i++) {
+   //       inputMail[i].addEventListener('change',InputValid( this, /\w+@[a-z_]+?\.[a-z]{2,6}/ig));
+   //    }
+   // } 
+
+   // formsValid();
+
+
+
+
+   // function ajax() {
+
+   //    let formS = document.getElementsByTagName('form'),
+   //        btnSubmit = document.querySelectorAll('button[type=submit]'),
+   //        formDesign = formS[3], //  formDesign = document.getElementsByClassName('main-form')[0],
+   //        btnDesign = btnSubmit[3], //  btnDesign = document.getElementsByClassName('popup-form__btn')[0],
+   //        inputPopup = formDesign.getElementsByTagName('input'),  // inputPopup = formDesign.getElementsByTagName('input'),
+   //        formConsult = formS[2],  //     formConsult = document.getElementById('form'),
+   //        btnConsult = btnSubmit[2],  //     btnConsult = formConsult.getElementsByTagName('button')[0],
+   //        inputConsult = formConsult.getElementsByTagName('input'), //     inputConsult = formConsult.getElementsByTagName('input'),
+   //        formMain = formS[1],  //     formConsult = document.getElementById('form'),
+   //        btnMain = btnSubmit[1],  //     btnConsult = formConsult.getElementsByTagName('button')[0],
+   //        inputMain = formConsult.getElementsByTagName('input'),
+   //       //     inputS = [inputPopup, inputConsult[0], inputConsult[1]],
+   //        statusMessage = document.createElement('div'),
+   //        statusMessageLoad = document.createElement('IMG'),
+   //        statusMessageOk = document.createElement('IMG');
+   //    statusMessageLoad.classList.add('status-img');
+   //    statusMessageOk.classList.add('status-img');
+   //    statusMessageLoad.src = "img/ajax-loader.GIF";
+   //    statusMessageOk.src = "img/success.SVG";
+   //    statusMessage.classList.add('status');
+
+
+
+   //    var status = new Object();
+   //    status.ok = ' \u0417\u0430\u044F\u0432\u043A\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0430, \u043C\u044B \u043F\u0435\u0440\u0435\u0437\u0432\u043E\u043D\u0438\u043C \u0412\u0430\u043C \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0438 10 \u043C\u0438\u043D\u0443\u0442';
+   //    status.load = ' \u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430...';
+   //    status.fail = "Что то пошло не так... Отправьте форму еще раз, пожалуйста";
+
+   //    var toServer = {
+   //       // Создаем объект с методом отправки данных на сервер
+   //       Go: function Go(event) {
+   //          var _this = this;
+
+   //          // В качестве аргумента передаем контекст вызова
+
+   //          event = event.preventDefault();
+   //          var formData = new FormData(this);
+
+   //          function postData(data) {
+   //             return new Promise(function (resolve, reject) {
+   //                var request = new XMLHttpRequest();
+
+   //                request.open('POST', 'server.php');
+
+   //                request.setRequestHeader('Content-Type', 'application/x-www-form-unlencoded');
+
+   //                request.onreadystatechange = function () {
+   //                   if (request.readyState < 4) {
+   //                      resolve();
+   //                   } else if (request.readyState === 4) {
+   //                      if (request.status == 200 && request.status < 300) {
+   //                         // коды ошибок
+   //                         resolve();
+   //                      } else {
+   //                         reject();
+   //                      }
+   //                   };
+   //                };
+
+   //                request.send(formData);
+   //             });
+   //          } // END postData
+
+   //          function clearInput() {
+   //          //    for (var i = 0; i < inputS.length; i++) {
+   //          //       inputS[i].value = ''; // очищаем поля ввода
+   //          //    }
+   //          };
+
+   //          postData(formData).then(function () {
+   //             _this.appendChild(statusMessageLoad);
+   //             _this.appendChild(statusMessage);
+   //             statusMessage.innerHTML = status.load;
+   //          }).then(function () {
+   //             _this.removeChild(statusMessageLoad);
+   //             _this.removeChild(statusMessage);
+   //             _this.appendChild(statusMessageOk);
+   //             _this.appendChild(statusMessage);
+   //             statusMessage.innerHTML = status.ok;
+   //          }).catch(function () {
+   //             _this.removeChild(statusMessageLoad);
+   //             _this.removeChild(statusMessageOk);
+   //             statusMessage.innerHTML = status.fail;
+   //          }).then(clearInput);
+   //       } // END Go метод объекта
+
+   //    }; // END toServer object
+
+   //    formDesign.addEventListener('submit', toServer.Go);
+   //    formConsult.addEventListener('submit', toServer.Go);
+   //    formMain.addEventListener('submit', toServer.Go);
+
+      
+   // }
+   // module.exports = ajax;
+// formsValid END Формы в модальных окнах
+
+
+
 
 }); // GENERAL END 
 
 // For All START
-//переменные
-// let popup_content = document.querySelectorAll('.popup-content');
+   //переменные
+   // let popup_content = document.querySelectorAll('.popup-content');
 
-// функции
-// function show(target, regExpr, classToShow) {
-//    if (regExpr.test(target.className)) {
-//       classToShow.classList.add('show');
-//    }
-// };
+   // функции
+   // function show(target, regExpr, classToShow) {
+   //    if (regExpr.test(target.className)) {
+   //       classToShow.classList.add('show');
+   //    }
+   // };
 
-// function hide (divS, popupClassName, ) {
-//    for (var i = 0; i < divS.length; i++) {
-//       divS[i].addEventListener('click', function(event) {
-//          let target = event.target;
-//          if (target.className === 'popup-close') {
-//             popupClassName.classList.remove('show');
-//             popupClassName.classList.add('hide');
-//          } else if (this.className === 'popup-content') {
-//             popupClassName.classList.remove('hide');
-//             popupClassName.classList.add('show');
-//          } else {
-//             popupClassName.classList.remove('show');
-//             popupClassName.classList.add('hide');
-//          }
-//       }, true);
-//    }
-// }
+   // function hide (divS, popupClassName, ) {
+   //    for (var i = 0; i < divS.length; i++) {
+   //       divS[i].addEventListener('click', function(event) {
+   //          let target = event.target;
+   //          if (target.className === 'popup-close') {
+   //             popupClassName.classList.remove('show');
+   //             popupClassName.classList.add('hide');
+   //          } else if (this.className === 'popup-content') {
+   //             popupClassName.classList.remove('hide');
+   //             popupClassName.classList.add('show');
+   //          } else {
+   //             popupClassName.classList.remove('show');
+   //             popupClassName.classList.add('hide');
+   //          }
+   //       }, true);
+   //    }
+   // }
 
 // For All END  
 
