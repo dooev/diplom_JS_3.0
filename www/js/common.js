@@ -206,9 +206,24 @@ window.addEventListener('DOMContentLoaded', function() {
          inputMessage = document.querySelectorAll('input[name="message"]');
 
       // validator(inputPhone, '^[+][0-9] [(][0-9]{3}[)] [0-9]{3}[-][0-9]{2}[-][0-9]{2}$', '+7-999-999-99-99');
-      validator(inputName, '^[А-Яа-я]+$', 'Введите имя на русском');
+      for (var i = 0; i < inputName.length; i++) {
+         inputName[i].onkeyup =  function(event){
+
+            let a = event.target.value.replace(/[\>\<\[\]\{\}\/\|\\':;`~"e+A-Za-z0-9!@#$%^&*()_=.,?-]/gi, '');
+            event.target.value = a; 
+         };
+      }
+            for (var i = 0; i < inputMessage.length; i++) {
+         inputMessage[i].onkeyup =  function(event){
+
+            let a = event.target.value.replace(/[\>\<\[\]\{\}\/\|\\':;`~"e+A-Za-z0-9!@#$%^&*()_=.,?-]/gi, '');
+            event.target.value = a; 
+         };
+      }
+
+      // validator(inputName, '^[А-Яа-я]+$', 'Введите имя на русском');
       validator(inputMail, '^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$', 'введите почту');
-      validator(inputMessage, '^[А-Яа-я]+$', 'Введите комментарий на русском');
+      // validator(inputMessage, '^[А-Яа-я]+$', 'Введите комментарий на русском');
 
       function validator(inputsArr, regExpr, plaseholder) {
          for (var i = 0; i < inputsArr.length; i++) {
