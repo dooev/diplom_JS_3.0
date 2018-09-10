@@ -28,9 +28,9 @@ window.addEventListener('DOMContentLoaded', function() {
       });
    }
    showGift();
-   // Gift END Модальное окно с подарком
+// Gift END Модальное окно с подарком
 
-   // showDesign START Модальные окна popup-design 
+// showDesign START Модальные окна popup-design 
    function showDesign() {
 
       let btn_design = document.querySelectorAll('.button-design'),
@@ -67,9 +67,9 @@ window.addEventListener('DOMContentLoaded', function() {
    }
 
    showDesign();
-   // showDesign END Модальные окна popup-design 
+// showDesign END Модальные окна popup-design 
 
-   // showMoreStyle START Подгрузка блоков
+// showMoreStyle START Подгрузка блоков
    function showMoreStyle() {
       let btnMoreStyle = document.querySelector('.button-transparent'),
          blockMoreStyle = document.querySelectorAll('.styles-2');
@@ -307,6 +307,48 @@ window.addEventListener('DOMContentLoaded', function() {
 // calc START Калькулятор
    
 // calc END Калькулятор
+
+
+// onHover START Картинки при наведении
+   function onHover () {
+
+      let sizeSmall = document.querySelector('.size-1'),
+          sizeMed = document.querySelector('.size-2'),
+          sizeLar = document.querySelector('.size-3'),
+          sizeXL = document.querySelector('.size-4');
+      
+      change(sizeSmall);
+      change(sizeMed);
+      change(sizeLar);
+      change(sizeXL);
+      
+      function change (element) {
+
+         element.onmouseenter = function (event){
+            
+            let target = event.target,
+               attr = target.getAttribute('src'),
+               newSrc = attr.replace(/.png/, "-1.png");
+            
+            if (attr.length == 15)  {            
+               target.setAttribute('src', newSrc);
+            }
+         };
+
+         element.onmouseleave = function (event) {
+            
+            let target = event.target,
+               attr = target.getAttribute('src'),
+               newSrc = attr.replace(/-1.png/, ".png");
+
+            if (attr.length > 15)  { 
+               target.setAttribute('src', newSrc);
+            }
+         };
+      }
+   }
+   onHover();
+// onHover END Картинки при наведении
 
 
 }); // GENERAL END 
