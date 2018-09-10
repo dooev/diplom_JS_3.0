@@ -4,6 +4,7 @@
 	<meta charset=UTF-8>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<title>Картины.art - портрет на холсте</title>
+
 </head>
 <body>
 	<img class="fixed-gift wow pulse infinite" src=img/gift.png alt>
@@ -595,10 +596,10 @@
 			<div class="col-md-10 col-md-offset-1"> 
 				<form action='#'>  <!-- action=mailer/smart.php method=POST -->
 					<div class=input-wrapper>
-						<input type=text name=name placeholder="Ваше имя" required>
-						<input type=text name=phone placeholder="Ваш телефон" required>
-						<input type=text name=email placeholder="Ваш E-mail">
-						<input class=input-text name=message type=text placeholder="Задайте ваш вопрос здесь" required>
+						<input id="name" type=text name=name placeholder="Ваше имя" required maxlength="20" pattern="\[а-яА-Я]+">
+						<input id='phone' type=text name=phone placeholder="Ваш телефон" required>
+						<input id='mail' type=text name=email placeholder="Ваш E-mail" maxlength="20">
+						<input class=input-text name=message type=text placeholder="Задайте ваш вопрос здесь" required maxlength="200">
 					</div>
 					<!-- onclick="yaCounter46630539.reachGoal('btn-consultation'); return true;" -->
 					<button class="button button-order" type="submit">Получить консультацию</button>
@@ -664,8 +665,8 @@
 				<h4>Остались вопросы? Закажите обратный звонок</h4>
 				<div class=main-form>
 					<form class=form action='#'>
-						<input type=text name=name placeholder="Ваше имя" required>
-						<input type=text name=phone placeholder="Ваш телефон" required>
+						<input id="name" type=text name=name placeholder="Ваше имя" required maxlength="20" pattern="\[а-яА-Я]+">
+						<input id='phone' type=text name=phone placeholder="Ваш телефон" required>
 						<!-- onclick="yaCounter46630539.reachGoal('btn-consultation'); return true;" -->
 						<button class="button button-order" type="submit" >Получить консультацию</button>
 					</form>
@@ -696,10 +697,10 @@
 					</div>
 					<div class=main-form>
 						<div class=form>
-							<input type=text name=name placeholder="Ваше имя" required>
-							<input type=text name=phone placeholder="Ваш телефон" required>
-							<input type=text name=email placeholder="Ваш e-mail">
-							<textarea name=message placeholder=Комментарий rows=2></textarea>
+							<input id="name" type=text name=name placeholder="Ваше имя" pattern="\[а-яА-Я]+" required maxlength="20">
+							<input id='phone' type=text name=phone placeholder="Ваш телефон" required>
+							<input id='mail' type=text name=email placeholder="Ваш e-mail" maxlength="20">
+							<textarea name=message placeholder=Комментарий rows=2 maxlength="200"></textarea>
 							<button class="button button-order" type="submit">Отправить дизайнеру</button>
 						</div>
 					</div>
@@ -711,10 +712,22 @@
 	<link rel=stylesheet href=css/bootstrap.css>
 	<link rel=stylesheet href=css/animate.css>
 	<link rel=stylesheet href=css/main.css>
+
 	<script src="js/wow.min.js"></script>
 	<script>
 		new WOW().init();
 	</script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.maskedinput-1.2.2.js"></script>
+		 <script type="text/javascript">
+
+	jQuery(function($) {
+
+	$.mask.definitions['~']='[+-]';
+
+	$('#phone').mask('+9 (999) 999-9999');
+
+	});</script> 
 	<!-- <script src="js/jquery.maskedinput.min.js"></script> -->
 	<script src="js/common.js"></script>
 </body>

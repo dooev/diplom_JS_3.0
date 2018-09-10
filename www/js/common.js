@@ -181,16 +181,16 @@ window.addEventListener('DOMContentLoaded', function() {
    function ajax() {
 
       let formS = document.getElementsByTagName('form'),
-         btnSubmit = document.querySelectorAll('button[type=submit]'),
+       //  btnSubmit = document.querySelectorAll('button[type=submit]'),
          formDesign = formS[3],
-         btnDesign = btnSubmit[3],
-         inputPopup = formDesign.getElementsByTagName('input'),
+        // btnDesign = btnSubmit[3],
+        // inputPopup = formDesign.getElementsByTagName('input'),
          formConsult = formS[2],
-         btnConsult = btnSubmit[2],
+        // btnConsult = btnSubmit[2],
          inputConsult = formConsult.getElementsByTagName('input'),
          formMain = formS[1],
-         btnMain = btnSubmit[1],
-         inputMain = formConsult.getElementsByTagName('input'),
+        // btnMain = btnSubmit[1],
+        // inputMain = formConsult.getElementsByTagName('input'),
          // inputS = [inputPopup, inputConsult[0], inputConsult[1]],
          statusMessage = document.createElement('div'),
          statusMessageLoad = document.createElement('IMG'),
@@ -205,7 +205,7 @@ window.addEventListener('DOMContentLoaded', function() {
          inputMail = document.querySelectorAll('input[name="email"]'),
          inputMessage = document.querySelectorAll('input[name="message"]');
 
-      validator(inputPhone, '^[+][0-9] [(][0-9]{3}[)] [0-9]{3}[-][0-9]{2}[-][0-9]{2}$', '+7-999-999-99-99');
+      // validator(inputPhone, '^[+][0-9] [(][0-9]{3}[)] [0-9]{3}[-][0-9]{2}[-][0-9]{2}$', '+7-999-999-99-99');
       validator(inputName, '^[А-Яа-я]+$', 'Введите имя на русском');
       validator(inputMail, '^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$', 'введите почту');
       validator(inputMessage, '^[А-Яа-я]+$', 'Введите комментарий на русском');
@@ -289,7 +289,7 @@ window.addEventListener('DOMContentLoaded', function() {
                _this.removeChild(statusMessageLoad);
                _this.removeChild(statusMessageOk);
                statusMessage.innerHTML = status.fail;
-            }) /*  .then(clearInput);  */
+            }); /*  .then(clearInput);  */
          } // END Go метод объекта
 
       }; // END toServer object
@@ -363,7 +363,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
          function plus(){
             if (size.value != '0' && material.value !='0') {
-               total =+ +size.value + +material.value + +options.value;
+               total =+ (+size.value) + (+material.value) + (+options.value);
                if ( promo.value == 'IWANTPOPART') {
                   total = total * 0.7;
                }
@@ -389,7 +389,7 @@ window.addEventListener('DOMContentLoaded', function() {
          next = document.querySelector('.main-next-btn');
 
          setInterval(mainSlideR, 5000);
-// на главном экране
+   // на главном экране
       function mainSlideR (){ 
             if (MslideIndex == 1){
                slideSMain[0].classList.add('show');
