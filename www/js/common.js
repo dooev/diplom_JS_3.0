@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function() {
 
 
-   // Gift START Модальное окно с подарком
+// Gift START Модальное окно с подарком
    function showGift() {
 
       let btn_gift = document.querySelector('.fixed-gift'),
@@ -263,11 +263,11 @@ window.addEventListener('DOMContentLoaded', function() {
                });
             } // END postData
 
-            function clearInput() {
-               //    for (var i = 0; i < inputS.length; i++) {
-               //       inputS[i].value = ''; // очищаем поля ввода
-               //    }
-            }
+            /* function clearInput() {
+                  for (var i = 0; i < inputS.length; i++) {
+                      inputS[i].value = ''; // очищаем поля ввода
+                  }
+            }  */
 
             postData(formData).then(function() {
                _this.appendChild(statusMessageLoad);
@@ -289,7 +289,7 @@ window.addEventListener('DOMContentLoaded', function() {
                _this.removeChild(statusMessageLoad);
                _this.removeChild(statusMessageOk);
                statusMessage.innerHTML = status.fail;
-            }).then(clearInput);
+            }) /*  .then(clearInput);  */
          } // END Go метод объекта
 
       }; // END toServer object
@@ -302,11 +302,6 @@ window.addEventListener('DOMContentLoaded', function() {
    ajax();
    // module.exports = ajax;
 // formsValid END Формы в модальных окнах
-
-
-// calc START Калькулятор
-   
-// calc END Калькулятор
 
 
 // onHover START Картинки при наведении
@@ -349,6 +344,42 @@ window.addEventListener('DOMContentLoaded', function() {
    }
    onHover();
 // onHover END Картинки при наведении
+
+
+// calc START Калькулятор
+   function calc () {
+
+      let size = document.querySelector('#size'), // select
+         material = document.querySelector('#material'), // select
+         options = document.querySelector('#options'), // select
+         promo = document.querySelector('.promocode'),
+         total = 0,
+         totalValue = document.querySelector('.calc-price');
+   
+        size.addEventListener('change', function(){   plus(); });
+        material.addEventListener('change', function(){   plus(); });
+        options.addEventListener('change', function(){ plus(); });
+        promo.addEventListener('change', function(){   plus(); });
+
+         function plus(){
+            if (size.value != '0' && material.value !='0') {
+               total =+ +size.value + +material.value + +options.value;
+               if ( promo.value == 'IWANTPOPART') {
+                  total = total * 0.7;
+               }
+               totalValue.innerHTML = total;
+            } 
+            else {
+               totalValue.innerHTML = 0;
+
+            }
+         }
+   }
+   calc();
+// calc END Калькулятор
+
+
+
 
 
 }); // GENERAL END 
