@@ -84,9 +84,9 @@ window.addEventListener('DOMContentLoaded', function() {
       });
    }
    showMoreStyle();
-   // showMoreStyle END Подгрузка блоков
+// showMoreStyle END Подгрузка блоков
 
-   // showConsult START Модальные окна popup-consultation
+// showConsult START Модальные окна popup-consultation
    function showConsult() {
 
       let btn_consult = document.querySelectorAll('.button-consultation'),
@@ -379,7 +379,72 @@ window.addEventListener('DOMContentLoaded', function() {
 // calc END Калькулятор
 
 
+// sliderS START слайдерЫ
+   function slider () {
+      let slideIndex = 1,
+         slideSFooter = document.querySelectorAll('.feedback-slider-item'),
+         slideSMain = document.querySelectorAll('.main-slider-item'),
+         prev = document.querySelector('.main-prev-btn'),
+         next = document.querySelector('.main-next-btn');
 
+         setInterval(mainSlideR, 5000);
+// на главном экране
+      function mainSlideR (){ 
+            if (slideIndex == 1){
+               slideSMain[0].classList.add('show');
+               slideSMain[0].classList.remove('hide');
+
+               slideSMain[1].classList.add('hide');
+               slideSMain[1].classList.remove('show');
+               slideSMain[0].animate(moveAndChange, {
+                   duration: 1000,
+                   fill: 'forwards'
+               });
+               slideIndex++;
+            }
+            else {
+               slideIndex--;
+               slideSMain[1].classList.add('show');
+               slideSMain[1].classList.remove('hide');
+
+               slideSMain[0].classList.add('hide');
+               slideSMain[0].classList.remove('show');
+               slideSMain[1].animate(moveAndChange, {
+                   duration: 1000,
+                   fill: 'forwards'
+               });
+            }
+      }
+      mainSlideR();
+
+
+      var moveAndChange = [
+          { 
+              transform: 'translateY(-700px)',
+          },
+          {
+              transform: 'translateY(0px)',
+          }
+      ];
+
+
+      // Нижний слайдер
+      
+      // function showSlide(n) {
+      //    if (n > slideSMain.length) {
+      //       slideIndex = 1;
+      //    }
+      //    if (n < 1) {
+      //       slideIndex = slideSMain.length;
+      //    }
+      //    for (let i = 0; i < slideSMain.length; i++) {
+      //       slideSMain[i].style.display = 'none';
+      //    }
+      //    slideSMain[slideIndex - 1].style.display = 'block';
+      // }
+   }
+   slider();
+// sliderS END слайдерЫ
 
 
 }); // GENERAL END 
