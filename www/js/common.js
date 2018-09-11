@@ -1,21 +1,57 @@
 window.addEventListener('DOMContentLoaded', function() {
 
+// Global START
+
+   //переменные
+   let btn_gift = document.querySelector('.fixed-gift'),
+      popup_gift = document.querySelector('.popup-gift'),
+      html = document.querySelector('html'),
+      style = getComputedStyle(html);
+   // функции
+   function showGift () {
+      popup_gift.classList.add('show');
+      // popup_gift.classList.remove('hide');
+      btn_gift.classList.remove('infinite');
+      btn_gift.classList.remove('pulse');
+      setTimeout(function() {
+         btn_gift.classList.add('hide');
+      }, 500);
+   }
+
+   // function show(target, regExpr, classToShow) {
+   //    if (regExpr.test(target.className)) {
+   //       classToShow.classList.add('show');
+   //    }
+   // };
+
+   // function hide (divS, popupClassName, ) {
+   //    for (var i = 0; i < divS.length; i++) {
+   //       divS[i].addEventListener('click', function(event) {
+   //          let target = event.target;
+   //          if (target.className === 'popup-close') {
+   //             popupClassName.classList.remove('show');
+   //             popupClassName.classList.add('hide');
+   //          } else if (this.className === 'popup-content') {
+   //             popupClassName.classList.remove('hide');
+   //             popupClassName.classList.add('show');
+   //          } else {
+   //             popupClassName.classList.remove('show');
+   //             popupClassName.classList.add('hide');
+   //          }
+   //       }, true);
+   //    }
+   // }
+
+// Global END  
 
 // Gift START Модальное окно с подарком
-   function showGift() {
-
-      let btn_gift = document.querySelector('.fixed-gift'),
-         popup_gift = document.querySelector('.popup-gift');
+   function Gift() {
 
       btn_gift.addEventListener('click', function() {
-         popup_gift.classList.add('show');
-         // popup_gift.classList.remove('hide');
-         btn_gift.classList.remove('infinite');
-         btn_gift.classList.remove('pulse');
-         setTimeout(function() {
-            btn_gift.classList.add('hide');
-         }, 500);
+         showGift();
       });
+
+
 
       popup_gift.addEventListener('click', function(event) {
          let target = event.target;
@@ -27,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function() {
          }
       });
    }
-   showGift();
+   Gift();
 // Gift END Модальное окно с подарком
 
 // showDesign START Модальные окна popup-design 
@@ -576,9 +612,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 //  START Гамбургер-меню
    function burger () {
-      let html = document.querySelector('html'),
-         style = getComputedStyle(html),
-         width = style.width.replace(/px/, ''),
+
+      let width = style.offsetWidth,
          burger =  document.querySelector('.burger'),
          burger_menu = document.querySelector('.burger-menu');
       
@@ -605,8 +640,6 @@ window.addEventListener('DOMContentLoaded', function() {
          else {
             burger_menu.classList.remove('show');
             burger.classList.add('bad-width');
-         
-
          }
       });
 
@@ -615,39 +648,54 @@ window.addEventListener('DOMContentLoaded', function() {
 //  END Гамбургер-меню
 
 
+//  START Модальное окно при пролистывании
+   function showModalOnEnd (){
+
+      let heightFull = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+           document.body.offsetHeight, document.documentElement.offsetHeight,
+           document.body.clientHeight, document.documentElement.clientHeight),
+         btnAll = document.querySelectorAll('button'),
+         btnClickIndex = 0;
+
+         for (var i = 0; i < btnAll.length; i++) {
+            btnAll[i].addEventListener('click', function() {
+               btnClickIndex++;
+            });
+         }
+
+      window.addEventListener("scroll", function(){
+
+         let heightWindow = document.documentElement.clientHeight,
+            heightScroll = window.pageYOffset || document.documentElement.scrollTop,
+            userScroll = heightWindow + heightScroll + '';
+            userScroll = userScroll.substring(0,5);
+            userScroll = +userScroll;
+
+         // console.log("heightAll", heightFull);
+            // console.log("heightScroll", heightScroll);
+
+         // console.log("Full = Scroll + Window", userScroll);
+     
+         if (btn_gift.classList.contains('hide')) {
+         }
+         else if(btnClickIndex < 1){
+            if (heightFull === userScroll || heightFull === (++userScroll) || 
+               heightFull === (--userScroll)) {
+               showGift();
+            }
+         }
+      });
+
+   }
+   showModalOnEnd();
+//  END Модальное окно при пролистывании
+
+
+
+
 }); // GENERAL END 
 
-// For All START
-
-//переменные
-// let popup_content = document.querySelectorAll('.popup-content');
-
-// функции
-// function show(target, regExpr, classToShow) {
-//    if (regExpr.test(target.className)) {
-//       classToShow.classList.add('show');
-//    }
-// };
-
-// function hide (divS, popupClassName, ) {
-//    for (var i = 0; i < divS.length; i++) {
-//       divS[i].addEventListener('click', function(event) {
-//          let target = event.target;
-//          if (target.className === 'popup-close') {
-//             popupClassName.classList.remove('show');
-//             popupClassName.classList.add('hide');
-//          } else if (this.className === 'popup-content') {
-//             popupClassName.classList.remove('hide');
-//             popupClassName.classList.add('show');
-//          } else {
-//             popupClassName.classList.remove('show');
-//             popupClassName.classList.add('hide');
-//          }
-//       }, true);
-//    }
-// }
-
-// For All END  
 
 
 
