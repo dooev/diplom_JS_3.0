@@ -601,7 +601,8 @@ window.addEventListener('DOMContentLoaded', function() {
 //  START Гамбургер-меню
    function burger () {
 
-      let width = style.offsetWidth,
+      let style = getComputedStyle(html),
+         width = document.body.offsetWidth,
          burger =  document.querySelector('.burger'),
          burger_menu = document.querySelector('.burger-menu');
       
