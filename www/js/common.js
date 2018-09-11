@@ -5,10 +5,10 @@ window.addEventListener('DOMContentLoaded', function() {
    //переменные
    let btn_gift = document.querySelector('.fixed-gift'),
       popup_gift = document.querySelector('.popup-gift'),
-      html = document.querySelector('html'),
-      style = getComputedStyle(html);
+      html = document.querySelector('html');
+      //style = getComputedStyle(html);
    // функции
-   function showGift () {
+   function showGift() {
       popup_gift.classList.add('show');
       // popup_gift.classList.remove('hide');
       btn_gift.classList.remove('infinite');
@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', function() {
 // showDesign START Модальные окна popup-design 
    function showDesign() {
 
-      let btn_design = document.querySelectorAll('.button-design'),
+      let // btn_design = document.querySelectorAll('.button-design'),
          popup_design = document.querySelector('.popup-design'),
          popup_content = document.querySelectorAll('.popup-content')[2],
          popup_designDivS = [popup_content, popup_design];
@@ -125,7 +125,7 @@ window.addEventListener('DOMContentLoaded', function() {
 // showConsult START Модальные окна popup-consultation
    function showConsult() {
 
-      let btn_consult = document.querySelectorAll('.button-consultation'),
+      let// btn_consult = document.querySelectorAll('.button-consultation'),
          popup_consult = document.querySelector('.popup-consultation'),
          popup_content = document.querySelectorAll('.popup-content')[0],
          popup_consultDivS = [popup_content, popup_consult];
@@ -236,7 +236,7 @@ window.addEventListener('DOMContentLoaded', function() {
       statusMessageOk.src = "img/success.SVG";
       statusMessage.classList.add('status');
       // валидация
-      let inputPhone = document.querySelectorAll('input[name="phone"]'),
+      let //inputPhone = document.querySelectorAll('input[name="phone"]'),
          inputName = document.querySelectorAll('input[name="name"]'),
          inputMail = document.querySelectorAll('input[name="email"]'),
          inputMessage = document.querySelectorAll('[name="message"]');
@@ -506,9 +506,9 @@ window.addEventListener('DOMContentLoaded', function() {
       function plusSlide(n) {
          footerSlideR(FslideIndex += n);
       }
-      function currentSlide(n) {
-         footerSlideR(FslideIndex = n);
-      }
+      //function currentSlide(n) {
+        // footerSlideR(FslideIndex = n);
+     // }
 
       prev.addEventListener('click', function () {
          plusSlide(-1);
@@ -601,7 +601,7 @@ window.addEventListener('DOMContentLoaded', function() {
 //  START Гамбургер-меню
    function burger () {
 
-      let style = getComputedStyle(html),
+      let //style = getComputedStyle(html),
          width = document.body.offsetWidth,
          burger =  document.querySelector('.burger'),
          burger_menu = document.querySelector('.burger-menu');
