@@ -526,6 +526,53 @@ window.addEventListener('DOMContentLoaded', function() {
 // sliderS END слайдерЫ
 
 
+//  START Аккордеон
+   function accordion () {
+
+      let btnAcc = document.querySelectorAll('.accordion-heading'),
+         blockAcc = document.querySelectorAll(".accordion-block");
+
+      for (var i = 0; i < blockAcc.length; i++) {
+         blockAcc[i].style.display = 'none';
+      }
+
+      for (var i = 0; i < btnAcc.length; i++) {
+         btnAcc[i].addEventListener('click', function(){
+
+            for (var i = 0; i < btnAcc.length; i++) {
+               btnAcc[i].classList.remove('ui-accordion-header-active');
+               this.classList.add('ui-accordion-header-active');
+
+               if (btnAcc[i].classList.contains('ui-accordion-header-active') ) {
+                  
+                  blockAcc[i].style.display = 'block';
+                  blockAcc[i].style.opacity = 0;
+                  opacity(blockAcc[i],50,1);
+               }
+               else { 
+                  blockAcc[i].style.display = 'none';
+               }
+            }
+
+         });
+      }  
+   }
+   // анимация
+   function opacity(element, speed, max_opac){
+       I=window.setInterval(function(){
+           if(+element.style.opacity>max_opac||!element.style.opacity){
+               element.style.opacity = 1; window.clearInterval(I)
+           }
+           else {
+               element.style.opacity = +element.style.opacity + 0.08;
+         }
+         
+       }, speed)
+   }
+   accordion();
+//  END Аккордеон
+
+
 }); // GENERAL END 
 
 // For All START
