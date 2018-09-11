@@ -5,12 +5,13 @@ window.addEventListener('DOMContentLoaded', function() {
    //переменные
    let btn_gift = document.querySelector('.fixed-gift'),
       popup_gift = document.querySelector('.popup-gift'),
-      html = document.querySelector('html');
+      html = document.querySelector('html'),
+      popup_design = document.querySelector('.popup-design');
       //style = getComputedStyle(html);
    // функции
    function showGift() {
       popup_gift.classList.add('show');
-      // popup_gift.classList.remove('hide');
+      popup_gift.classList.remove('hide');
       btn_gift.classList.remove('infinite');
       btn_gift.classList.remove('pulse');
       setTimeout(function() {
@@ -70,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function() {
    function showDesign() {
 
       let // btn_design = document.querySelectorAll('.button-design'),
-         popup_design = document.querySelector('.popup-design'),
+         
          popup_content = document.querySelectorAll('.popup-content')[2],
          popup_designDivS = [popup_content, popup_design];
 
@@ -80,6 +81,7 @@ window.addEventListener('DOMContentLoaded', function() {
          // show(target, /button-design/g, popup_design);
          if (/button-design/g.test(target.className)) {
             popup_design.classList.add('show');
+            popup_design.classList.remove('hide');
          }
       });
 
@@ -154,7 +156,12 @@ window.addEventListener('DOMContentLoaded', function() {
             }
          }, true);
       }
-
+      // открытие через 60 сек
+      setTimeout(function() {
+         if (popup_design.classList.contains('hide') && popup_gift.classList.contains('hide') ) {
+            popup_consult.classList.add('show');
+         }
+      }, 60000);
    }
 
    showConsult();
