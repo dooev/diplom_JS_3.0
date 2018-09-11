@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
       // hide (popup_designDivS, popup_design );
-      for (var i = 0; i < popup_designDivS.length; i++) {
+      for (let i = 0; i < popup_designDivS.length; i++) {
          popup_designDivS[i].addEventListener('click', function(event) {
             let target = event.target;
             if (target.className === 'popup-close') {
@@ -111,7 +111,7 @@ window.addEventListener('DOMContentLoaded', function() {
          blockMoreStyle = document.querySelectorAll('.styles-2');
 
       btnMoreStyle.addEventListener('click', function() {
-         for (var i = 0; i < blockMoreStyle.length; i++) {
+         for (let i = 0; i < blockMoreStyle.length; i++) {
             blockMoreStyle[i].classList.remove('hidden-lg', 'hidden-md', 'hidden-sm', 'hidden-xs', 'styles-2');
             blockMoreStyle[i].classList.add('col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
             btnMoreStyle.classList.add('hide');
@@ -139,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function() {
       });
 
       // hide (popup_consultDivS, popup_consult );
-      for (var i = 0; i < popup_consultDivS.length; i++) {
+      for (let i = 0; i < popup_consultDivS.length; i++) {
          popup_consultDivS[i].addEventListener('click', function(event) {
             let target = event.target;
             if (target.className === 'popup-close') {
@@ -167,9 +167,9 @@ window.addEventListener('DOMContentLoaded', function() {
          blockS_Portfol = blockPortfol.querySelectorAll('.portfolio-block'),
          portfol_no_block = blockPortfol.querySelector('.portfolio-no');
       // акнивная кнопка
-      for (var i = 0; i < btnS_Portfol.length; i++) {
+      for (let i = 0; i < btnS_Portfol.length; i++) {
          btnS_Portfol[i].addEventListener('click', function() {
-            for (var i = 0; i < btnS_Portfol.length; i++) {
+            for (let i = 0; i < btnS_Portfol.length; i++) {
                btnS_Portfol[i].classList.remove('active');
             }
             this.classList.toggle('active');
@@ -239,17 +239,17 @@ window.addEventListener('DOMContentLoaded', function() {
       let inputPhone = document.querySelectorAll('input[name="phone"]'),
          inputName = document.querySelectorAll('input[name="name"]'),
          inputMail = document.querySelectorAll('input[name="email"]'),
-         inputMessage = document.querySelectorAll('input[name="message"]');
+         inputMessage = document.querySelectorAll('[name="message"]');
 
       // validator(inputPhone, '^[+][0-9] [(][0-9]{3}[)] [0-9]{3}[-][0-9]{2}[-][0-9]{2}$', '+7-999-999-99-99');
-      for (var i = 0; i < inputName.length; i++) {
+      for (let i = 0; i < inputName.length; i++) {
          inputName[i].onkeyup =  function(event){
 
             let a = event.target.value.replace(/[\>\<\[\]\{\}\/\|\\':;`~"e+A-Za-z0-9!@#$%^&*()_=.,?-]/gi, '');
             event.target.value = a; 
          };
       }
-            for (var i = 0; i < inputMessage.length; i++) {
+            for (let i = 0; i < inputMessage.length; i++) {
          inputMessage[i].onkeyup =  function(event){
 
             let a = event.target.value.replace(/[\>\<\[\]\{\}\/\|\\':;`~"e+A-Za-z0-9!@#$%^&*()_=.,?-]/gi, '');
@@ -262,7 +262,7 @@ window.addEventListener('DOMContentLoaded', function() {
       // validator(inputMessage, '^[А-Яа-я]+$', 'Введите комментарий на русском');
 
       function validator(inputsArr, regExpr, plaseholder) {
-         for (var i = 0; i < inputsArr.length; i++) {
+         for (let i = 0; i < inputsArr.length; i++) {
             inputsArr[i].setAttribute("pattern", regExpr);
             inputsArr[i].setAttribute("placeholder", plaseholder);
          }
@@ -279,7 +279,7 @@ window.addEventListener('DOMContentLoaded', function() {
          // Создаем объект с методом отправки данных на сервер
          Go: function Go(event) {
             var _this = this;
-            for (var i = 0; i < inputConsult.length; i++) {
+            for (let i = 0; i < inputConsult.length; i++) {
                _this[i].classList.remove('hide');
                _this.classList.add('show');
             }
@@ -498,7 +498,7 @@ window.addEventListener('DOMContentLoaded', function() {
          if (n < 1) {
             FslideIndex = slideSFooter.length;
          }
-         for (var i = 0; i < slideSFooter.length; i++) {
+         for (let i = 0; i < slideSFooter.length; i++) {
             slideSFooter[i].style.display = 'none';
          }
          slideSFooter[FslideIndex - 1].style.display = 'block';
@@ -568,25 +568,25 @@ window.addEventListener('DOMContentLoaded', function() {
       let btnAcc = document.querySelectorAll('.accordion-heading'),
          blockAcc = document.querySelectorAll(".accordion-block");
 
-      for (var i = 0; i < blockAcc.length; i++) {
+      for (let i = 0; i < blockAcc.length; i++) {
          blockAcc[i].style.display = 'none';
       }
 
-      for (var i = 0; i < btnAcc.length; i++) {
+      for (let i = 0; i < btnAcc.length; i++) {
          btnAcc[i].addEventListener('click', function(){
 
-            for (var i = 0; i < btnAcc.length; i++) {
-               btnAcc[i].classList.remove('ui-accordion-header-active');
+            for (let q = 0; q < btnAcc.length; q++) {
+               btnAcc[q].classList.remove('ui-accordion-header-active');
                this.classList.add('ui-accordion-header-active');
 
-               if (btnAcc[i].classList.contains('ui-accordion-header-active') ) {
+               if (btnAcc[q].classList.contains('ui-accordion-header-active') ) {
                   
-                  blockAcc[i].style.display = 'block';
-                  blockAcc[i].style.opacity = 0;
+                  blockAcc[q].style.display = 'block';
+                  blockAcc[q].style.opacity = 0;
                   opacity(blockAcc[i],50,1);
                }
                else { 
-                  blockAcc[i].style.display = 'none';
+                  blockAcc[q].style.display = 'none';
                }
             }
 
@@ -658,7 +658,7 @@ window.addEventListener('DOMContentLoaded', function() {
          btnAll = document.querySelectorAll('button'),
          btnClickIndex = 0;
 
-         for (var i = 0; i < btnAll.length; i++) {
+         for (let i = 0; i < btnAll.length; i++) {
             btnAll[i].addEventListener('click', function() {
                btnClickIndex++;
             });
