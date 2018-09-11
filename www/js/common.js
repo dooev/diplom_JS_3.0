@@ -469,7 +469,6 @@ window.addEventListener('DOMContentLoaded', function() {
       }
       mainSlideR();
 
-
       var animateY = [
           { 
               transform: 'translateY(-700px)',
@@ -478,18 +477,6 @@ window.addEventListener('DOMContentLoaded', function() {
               transform: 'translateY(0px)',
           }
       ];
-
-
-      // Нижний слайдер
-      // for (var i = 0; i < slideSFooter.length; i++) {
-      
-         // if (i != slideSFooter.length) {
-         // }/
-         // else {
-            // i = 0;
-         // }
-      // }
-      
 
       function footerSlideR (n){ 
          if (n > slideSFooter.length){
@@ -573,6 +560,7 @@ window.addEventListener('DOMContentLoaded', function() {
       }
 
       for (let i = 0; i < btnAcc.length; i++) {
+        
          btnAcc[i].addEventListener('click', function(){
 
             for (let q = 0; q < btnAcc.length; q++) {
@@ -595,15 +583,15 @@ window.addEventListener('DOMContentLoaded', function() {
    }
    // анимация
    function opacity(element, speed, max_opac){
-       I=window.setInterval(function(){
+     let I=window.setInterval(function(){
            if(+element.style.opacity>max_opac||!element.style.opacity){
-               element.style.opacity = 1; window.clearInterval(I)
+               element.style.opacity = 1; window.clearInterval(I);
            }
            else {
                element.style.opacity = +element.style.opacity + 0.08;
          }
          
-       }, speed)
+       }, speed);
    }
    accordion();
 //  END Аккордеон
