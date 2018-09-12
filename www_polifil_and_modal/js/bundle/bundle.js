@@ -253,10 +253,12 @@
                   for (var _i2 = 0; _i2 < blockS_Portfol.length; _i2++) {
                      if (blockS_Portfol[_i2].classList.contains(NameClass)) {
                         blockS_Portfol[_i2].classList.add('show');
+                        portfol_no_block.classList.remove('show');
+                        
                      } else {
+                        portfol_no_block.classList.remove('show');
                         blockS_Portfol[_i2].classList.remove('show');
                         blockS_Portfol[_i2].classList.add('hide');
-                        portfol_no_block.classList.remove('show');
                      }
                      // для бабушек и дедушек
                      if (thisBtn.classList.contains('grandmother') || thisBtn.classList.contains('granddad')) {
