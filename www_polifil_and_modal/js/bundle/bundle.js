@@ -123,9 +123,7 @@
             };
          }
 
-         // validator(inputName, '^[А-Яа-я]+$', 'Введите имя на русском');
          validator(inputMail, '^[-._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$', 'введите почту');
-         // validator(inputMessage, '^[А-Яа-я]+$', 'Введите комментарий на русском');
 
          function validator(inputsArr, regExpr, plaseholder) {
             for (var _i5 = 0; _i5 < inputsArr.length; _i5++) {
