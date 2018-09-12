@@ -193,12 +193,12 @@
                   _this.removeChild(statusMessageLoad);
                   _this.removeChild(statusMessage);
                   for (var _i7 = 0; _i7 < _this.length; _i7++) {
-                    _this[_i7].classList.add('hide');
-                    _this[_i7].classList.remove('show');
+                     _this[_i7].classList.add('hide');
+                     _this[_i7].classList.remove('show');
                   }
                   for (var _ig7 = 0; _ig7 < inputsMainForm.length; _ig7++) {
-                    inputsMainForm[_ig7].classList.add('show');
-                    inputsMainForm[_ig7].classList.remove('hide');
+                     inputsMainForm[_ig7].classList.add('show');
+                     inputsMainForm[_ig7].classList.remove('hide');
                   }
                }).then(function() {
                   _this.appendChild(statusMessageOk);
@@ -411,12 +411,36 @@
          var sizeSmall = document.querySelector('.size-1'),
             sizeMed = document.querySelector('.size-2'),
             sizeLar = document.querySelector('.size-3'),
-            sizeXL = document.querySelector('.size-4');
+            sizeXL = document.querySelector('.size-4'),
+            blockSmall = document.querySelector('.sizes-block-1'),
+            blockMed = document.querySelector('.sizes-block-2'),
+            blockLar = document.querySelector('.sizes-block-3'),
+            blockXL = document.querySelector('.sizes-block-4'),
+            pSmall = blockSmall.querySelectorAll('p'),
+            pMed = blockMed.querySelectorAll('p'),
+            pLar = blockLar.querySelectorAll('p'),
+            pXL = blockXL.querySelectorAll('p');
 
          change(sizeSmall);
          change(sizeMed);
          change(sizeLar);
          change(sizeXL);
+
+         function hideP(targ, clas, arrP) {
+            if (targ.classList.contains(clas)) {
+               for (var ii = 0; ii < arrP.length; ii++) {
+                  arrP[ii].style.display = 'none';
+               }
+            }
+         }
+
+         function showP(targ, clas, arrP) {
+            if (targ.classList.contains(clas)) {
+               for (var ii = 0; ii < arrP.length; ii++) {
+                  arrP[ii].style.display = 'block';
+               }
+            }
+         }
 
          function change(element) {
 
@@ -428,8 +452,14 @@
 
                if (attr.length == 15) {
                   target.setAttribute('src', newSrc);
+                  hideP(target, 'size-1', pSmall);
+                  hideP(target, 'size-2', pMed);
+                  hideP(target, 'size-3', pLar);
+                  hideP(target, 'size-4', pXL);
+
                }
-            };
+            }
+
 
             element.onmouseleave = function(event) {
 
@@ -439,8 +469,12 @@
 
                if (attr.length > 15) {
                   target.setAttribute('src', newSrc);
+                  showP(target, 'size-1', pSmall);
+                  showP(target, 'size-2', pMed);
+                  showP(target, 'size-3', pLar);
+                  showP(target, 'size-4', pXL);
                }
-            };
+            }
          }
       }
       module.exports = onHover;
