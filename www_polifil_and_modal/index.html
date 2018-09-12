@@ -96,10 +96,10 @@
 				<div class=col-md-7>
 					<div class=main-slider>
 						<div class=main-slider-item show>
-							<img src=img/main-1.png alt>
+							<img src=img/main-1.png class='main-slider-item-img show' alt>
 						</div>
 						<div class=main-slider-item hide>
-							<img src=img/main-2.png alt>
+							<img src=img/main-2.png class='main-slider-item-img hide' alt>
 						</div>
 					</div>
 				</div>
@@ -594,7 +594,7 @@
 			<p class=p-heading>Остались вопросы?</p>
 			<h2>Получите консультацию художника!</h2>
 			<div class="col-md-10 col-md-offset-1"> 
-				<form action='#'>  <!-- action=mailer/smart.php method=POST -->
+				<form action='#' class="main-js">  <!-- action=mailer/smart.php method=POST -->
 					<div class=input-wrapper>
 						<input  type=text name=name placeholder="Ваше имя" required maxlength="50">
 						<input class='phone' type=text name=phone placeholder="Ваш телефон" required>
@@ -729,6 +729,7 @@
 
 	});</script> 
 	<!-- <script src="js/jquery.maskedinput.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
 	<script src="js/bundle/bundle.js"></script>
 </body>
 </html>

@@ -20,8 +20,8 @@ function ajax() {
        statusMessageLoad = document.createElement('IMG'),
        statusMessageOk = document.createElement('IMG');
    statusMessageLoad.classList.add('status-img');
-   statusMessageLoad.src = "img/ajax-loader.GIF";
-   statusMessageOk.src = "img/success.SVG";
+   statusMessageLoad.src = "../../img/ajax-loader.GIF";
+   statusMessageOk.src = "../../img/success.SVG";
    statusMessage.classList.add('status');
    // валидация
    var //inputPhone = document.querySelectorAll('input[name="phone"]'),

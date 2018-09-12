@@ -2,7 +2,7 @@ function slider() {
    var MslideIndex = 1,
        FslideIndex = 1,
        slideSFooter = document.querySelectorAll('.feedback-slider-item'),
-       slideSMain = document.querySelectorAll('.main-slider-item'),
+       slideSMain = document.querySelectorAll('.main-slider-item-img'),
        prev = document.querySelector('.main-prev-btn'),
        next = document.querySelector('.main-next-btn');
 
@@ -10,36 +10,25 @@ function slider() {
    // на главном экране
    function mainSlideR() {
       if (MslideIndex == 1) {
-         slideSMain[0].classList.add('show');
-         slideSMain[0].classList.remove('hide');
-
-         slideSMain[1].classList.add('hide');
+         slideSMain[1].classList.remove('move');
          slideSMain[1].classList.remove('show');
-         slideSMain[0].animate(animateY, {
-            duration: 1000,
-            fill: 'forwards'
-         });
+         slideSMain[1].classList.add('hide');
+         slideSMain[0].classList.remove('hide');
+         slideSMain[0].classList.add('show');
+         slideSMain[0].classList.add('move');
+
          MslideIndex++;
       } else {
          MslideIndex--;
-         slideSMain[1].classList.add('show');
+         slideSMain[0].classList.remove('move');
          slideSMain[1].classList.remove('hide');
-
+         slideSMain[1].classList.add('show');
+         slideSMain[1].classList.add('move');
          slideSMain[0].classList.add('hide');
          slideSMain[0].classList.remove('show');
-         slideSMain[1].animate(animateY, {
-            duration: 1000,
-            fill: 'forwards'
-         });
       }
    }
    mainSlideR();
-
-   var animateY = [{
-      transform: 'translateY(-700px)'
-   }, {
-      transform: 'translateY(0px)'
-   }];
 
    function footerSlideR(n) {
       if (n > slideSFooter.length) {
@@ -52,18 +41,23 @@ function slider() {
          slideSFooter[i].style.display = 'none';
       }
       slideSFooter[FslideIndex - 1].style.display = 'block';
+
    }
    footerSlideR(FslideIndex);
 
+   var indexArrowPress = 0;
    function auto() {
-      plusSlide(1);
-      slideSFooter[FslideIndex - 1].animate(animateX_Right, {
-         duration: 300,
-         fill: 'forwards'
-      });
+      if (indexArrowPress === 0){
+         plusSlide(1);
+         slideSFooter[FslideIndex - 1].classList.add('nextSlide');
+      } else{ 
+         clearInterval(timer);
+      }
    }
-   setInterval(auto, 3000);
-
+   function timer(){
+      setInterval(auto, 3000);
+   }
+   timer(); 
    function plusSlide(n) {
       footerSlideR(FslideIndex += n);
    }
@@ -72,31 +66,16 @@ function slider() {
    // }
 
    prev.addEventListener('click', function () {
+      indexArrowPress = 1;
       plusSlide(-1);
-      slideSFooter[FslideIndex - 1].animate(animateX_Left, {
-         duration: 300,
-         fill: 'forwards'
-      });
+      slideSFooter[FslideIndex - 1].classList.add('prevSlide');
    });
 
    next.addEventListener('click', function () {
+      indexArrowPress = 1;
       plusSlide(1);
-      slideSFooter[FslideIndex - 1].animate(animateX_Right, {
-         duration: 300,
-         fill: 'forwards'
-      });
+      slideSFooter[FslideIndex - 1].classList.add('nextSlide');
    });
 
-   var animateX_Left = [{
-      transform: 'translateX(-400px)'
-   }, {
-      transform: 'translateX(0px)'
-   }];
-
-   var animateX_Right = [{
-      transform: 'translateX(+400px)'
-   }, {
-      transform: 'translateX(0px)'
-   }];
 }
    module.exports = slider;
